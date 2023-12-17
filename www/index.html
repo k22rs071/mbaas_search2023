@@ -31,8 +31,32 @@
             })
 
         }
+        function searchbounty() {
+            let bounty = $("#bounty").val();
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.equalTo("bounty", bounty).fetchAll().then(function(results) {
+                showResults(results);
+            })
 
-        function searchLevel() {
+        }
+        function searchBirthplace() {
+            let Birthplace = $("#Birthplace").val();
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.equalTo("Birthplace", Birthplace).fetchAll().then(function(results) {
+                showResults(results);
+            })
+
+        }
+        function searchability() {
+            let ability = $("#ability").val();
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.equalTo("ability", ability).fetchAll().then(function(results) {
+                showResults(results);
+            })
+
+        }
+
+        /*function searchLevel() {
             let level = parseInt($("#level").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass.equalTo("level", level).fetchAll().then(function(results) {
@@ -55,7 +79,7 @@
                 showResults(results);
             })
 
-        }
+        }*/
 
         function showResults(results) {
             // テーブルのヘッダを生成
@@ -65,8 +89,8 @@
                 msg += "<tr>";
                 msg += "<td>" + results[i].name + "</td>";
                 msg += "<td class='num'>" + results[i].bounty + "</td>";
-                //msg += "<td class='num'>" + results[i].attack + "</td>";
-                //msg += "<td class='num'>" + results[i].defence + "</td>";
+                msg += "<td class='num'>" + results[i].Birthplace + "</td>";
+                msg += "<td class='num'>" + results[i].ability + "</td>";
                 msg += "</tr>";
             }
             // テーブルのテイラを生成
@@ -77,29 +101,33 @@
 </head>
 
 <body>
-    <h1>mBaaS search</h1>
+    <h1>ONE PIECE</h1>
     <div>
         <label for="name">name:</label>
         <input id="name" type="text" placeholder="name">
     </div>
     <div>
         <label for="bounty">bounty:</label>
-        <input id="bounty" type="number" placeholder="bounty">
+        <input id="bounty" type="text" placeholder="bounty">
     </div>
     <div>
         <label for="Birthplace">Birthplace:</label>
         <input id="Birthplace" type="text" placeholder="place">
     </div>
+    <div>
+        <label for="ability">ability:</label>
+        <input id="ability" type="text" placeholder="ability">
+    </div>
     <div id="button">
-        <button class="btn" onclick="fetchAll()">Fetch All</button>
-        <button class="btn" onclick="searchName()">Name</button>
+        <button class="btn" onclick="fetchAll()">All</button>
+        <button class="btn" onclick="searchName()">name</button>
+        <button class="btn" onclick="searchbounty()">bounty</button>
         <br>
-        <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
-        <button class="btn" onclick="searchLevel()">Level</button>
-        <button class="btn" onclick="searchLevelGT()">Level &gt;</button>
+        <button class="btn" onclick="searchBirthplace()">Birthplace</button>
+        <button class="btn" onclick="searchability()">ability</button>
 
     </div>
-    <div id="message">message area</div>
+    <div id="message">status</div>
 </body>
 
 </html>
