@@ -55,6 +55,15 @@
             })
 
         }
+        function random() {
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.fetchAll()
+                .then(function(results) {
+                    const randomIndex=Math.floor(Math.random()*results.length);
+                    const randomkyara=results[randomIndex];
+                    showResults([randomkyara]);
+                })
+        }
 
         /*function searchLevel() {
             let level = parseInt($("#level").val());
@@ -125,6 +134,7 @@
         <br>
         <button class="btn" onclick="searchBirthplace()">Birthplace</button>
         <button class="btn" onclick="searchability()">ability</button>
+        <button class="btn" onclick="random()">random</button>
 
     </div>
     <div id="message">status</div>
